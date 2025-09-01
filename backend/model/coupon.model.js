@@ -3,18 +3,18 @@ import mongoose from "mongoose";
 const couponSchema = new mongoose.Schema({
     code: {
         type: String,
-        required: [true, "Code is required"],
+        required: true,
         unique: true
     },
     discountPercentage: {
         type: Number,
-        required: [true, "Discount percentage is required"],
+        required: true,
         min: 0,
         max: 100
     },
     expirationDate: {
         type: Date,
-        required: [true, "Expiration date is required"]
+        required: true
     },
     isActive: {
         type: Boolean,
@@ -23,7 +23,7 @@ const couponSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-        required: [true, "User ID is required"],
+        required: true,
         unique: true
     }
 }, 

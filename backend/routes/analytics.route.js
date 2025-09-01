@@ -4,7 +4,7 @@ import { getAnalyticsData, getDailySalesData } from "../controllers/analytics.co
 
 const router = express.Router();
 
-router.get("/", protectRoute, adminRoute, async(req, res) => {
+router.get("/", protectRoute, adminRoute, async (req, res) => {
     try {
         const analyticsData = await getAnalyticsData();
 
@@ -13,10 +13,13 @@ router.get("/", protectRoute, adminRoute, async(req, res) => {
 
         const dailySalesData = await getDailySalesData(startDate, endDate);
 
-        res.json({analyticsData, dailySalesData});
+        res.json({
+            analyticsData,
+            dailySalesData,
+        });
     } catch (error) {
-        console.log("Error in get analytics routes", error.message);
-        res.status(500).json({message: "Server error", error: error.message});
+        console.log("Error in analytics route", error.message);
+        res.status(500).json({ message: "Server error", error: error.message });
     }
 });
 
