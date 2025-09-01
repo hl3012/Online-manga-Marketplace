@@ -11,7 +11,6 @@ const stripePromise = loadStripe(
 
 const OrderSummary = () => {
     const { total, subtotal, coupon, isCouponApplied, cart } = useCartStore();
-
     const savings = subtotal - total;
     const formattedSubtotal = subtotal.toFixed(2);
     const formattedTotal = total.toFixed(2);

@@ -28,7 +28,7 @@ export const useProductStore = create((set) => ({
             set({products: res.data.products, loading: false});
         } catch (error) {
             set({error: "Failed to fetch products", loading: false});
-            toast.error(error.res.data.message || "Product creation went wrong");
+            toast.error(error.response.data.message || "Product creation went wrong");
         }
     },
 

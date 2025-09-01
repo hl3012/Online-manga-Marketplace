@@ -49,8 +49,8 @@ export const createProduct = async (req, res) => {
            name,
            description,
            price,
-           image: cloudinaryResponse?.secure_url?cloudinaryResponse.secure_url: "",
-           category
+           image: cloudinaryResponse?.secure_url ? cloudinaryResponse.secure_url : "",
+           category,
        })
 
        res.status(201).json(product);
@@ -67,13 +67,13 @@ export const deleteProduct = async (req, res) => {
         if(!product) {
             return res.status(404).json({message: "Product not found"});
         }
-        if(product.image) {
+        if (product.image) {
             const publicId = product.image.split("/").pop().split(".")[0];
             try {
                 await cloudinary.uploader.destroy(`products/${publicId}`);
-                console.log("Image deleted from cloudinary");
+                console.log("deleted image from cloduinary");
             } catch (error) {
-                console.log("Error in deleting image from cloudinary", error.message);
+                console.log("error deleting image from cloduinary", error);
             }
         }
 

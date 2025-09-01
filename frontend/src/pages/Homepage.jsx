@@ -13,7 +13,6 @@ const categories = [
 	{ href: "/bags", name: "Bags", imageUrl: "/bags.jpg" },
 ];
 
-
 const Homepage = () => {
   const {fetchFeaturedProducts, products, isLoading} = useProductStore();
 
