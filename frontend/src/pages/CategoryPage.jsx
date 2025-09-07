@@ -17,10 +17,10 @@ const CategoryPage = () => {
   
   return (
     <div className='min-h-screen'>
-      <div className='relative z-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-16'>
+      <div className='relative z-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-24'>
 
         <motion.h1
-          className='text-center text-4xl sm:text-5xl font-bold text-emerald-400 mb-8'
+          className='text-center text-4xl sm:text-4xl font-bold text-gray-600 mb-8'
           initial={{opacity: 0, y: -20}}
           animate={{opacity: 1, y: 0}}
           transition={{duration: 0.8}}
@@ -48,7 +48,7 @@ const CategoryPage = () => {
 
 
       </div>
-
+      <div className='absolute inset-0 h-[10vw] bg-gradient-to-b from-black to-transparent opacity-30 z-[-1]' />
     </div>
   )
 }

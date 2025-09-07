@@ -63,7 +63,7 @@ const AnalyticsTab = () => {
 				/>
 			</div>
 			<motion.div
-				className='bg-gray-800/60 rounded-lg p-6 shadow-lg'
+				className='bg-gray-800/100  p-6 shadow-lg'
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.5, delay: 0.25 }}
@@ -71,9 +71,9 @@ const AnalyticsTab = () => {
 				<ResponsiveContainer width='100%' height={400}>
 					<LineChart data={dailySalesData}>
 						<CartesianGrid strokeDasharray='3 3' />
-						<XAxis dataKey='date' stroke='#D1D5DB' />
-						<YAxis yAxisId='left' stroke='#D1D5DB' />
-						<YAxis yAxisId='right' orientation='right' stroke='#D1D5DB' />
+						<XAxis dataKey='date' stroke='#ffffff' />
+						<YAxis yAxisId='left' stroke='#ffffff' />
+						<YAxis yAxisId='right' orientation='right' stroke='#ffffff' />
 						<Tooltip />
 						<Legend />
 						<Line
@@ -102,7 +102,7 @@ export default AnalyticsTab;
 
 const AnalyticsCard = ({ title, value, icon: Icon, color }) => (
 	<motion.div
-		className={`bg-gray-800 rounded-lg p-6 shadow-lg overflow-hidden relative ${color}`}
+		className={`bg-gray-800 p-6 shadow-lg overflow-hidden relative ${color}`}
 		initial={{ opacity: 0, y: 20 }}
 		animate={{ opacity: 1, y: 0 }}
 		transition={{ duration: 0.5 }}
@@ -113,8 +113,8 @@ const AnalyticsCard = ({ title, value, icon: Icon, color }) => (
 				<h3 className='text-white text-3xl font-bold'>{value}</h3>
 			</div>
 		</div>
-		<div className='absolute inset-0 bg-gradient-to-br from-emerald-600 to-emerald-900 opacity-30' />
-		<div className='absolute -bottom-4 -right-4 text-emerald-800 opacity-50'>
+		<div className='absolute inset-0 bg-gradient-to-br from-black to-emerald-900 opacity-30' />
+		<div className='absolute -bottom-4 -right-4 text-white opacity-50'>
 			<Icon className='h-32 w-32' />
 		</div>
 	</motion.div>

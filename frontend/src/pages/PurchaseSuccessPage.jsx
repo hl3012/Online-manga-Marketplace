@@ -99,9 +99,9 @@ const PurchaseSuccessPage = () => {
                         <ArrowRight className='ml-2' size={18} />
                     </Link>
                 </div>
-
+            
             </div>
-
+            
         </div>
         
     </div>
