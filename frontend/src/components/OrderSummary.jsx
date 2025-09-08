@@ -5,7 +5,7 @@ import {MoveRight} from 'lucide-react'
 import {loadStripe} from '@stripe/stripe-js'
 import axios from '../lib/axios'
 
-//invalid public key
+//invalid sandbox public key
 const stripePromise = loadStripe(
    "pk_test_51S1uo9HWuXQhHciKfH4PLfioZWGd692J8UoHuXnYvVnBWC0AyMW2nHFHXnedAVAU2S988bUGV1BLweRdTqkU4t5Y00zH4DTefP"
 );
