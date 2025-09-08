@@ -26,7 +26,7 @@ const Navbar = () => {
     // <header className='fixed top-0 left-0 w-full bg-white00 bg-opacity-90 backdrop-blur-md shadow-lg z-40 transition-all duration-300 border-b border-emerald-800'>
     <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
         isScrolled 
-            ? 'bg-gray-600 bg-opacity-50 border-gray-200' 
+            ? 'bg-gray-400 bg-opacity-50 border-gray-200' 
             : 'bg-transparent border-transparent' 
     }`}>
       
@@ -39,12 +39,12 @@ const Navbar = () => {
 
 
           <nav className='flex flex-wrap items-center gap-4'>
-            <Link to='/' className='text-white hover:scale-110 transition duration-300 ease-in-out'>
+            <Link to='/' className='text-gray-300 hover:scale-110 transition duration-300 ease-in-out font-bold'>
               Home
             </Link>
             
             {user && (
-              <Link to='/cart' className='relative group text-white hover:scale-110 transition duration-300 ease-in-out'>
+              <Link to='/cart' className='relative group text-gray-300 hover:scale-110 font-bold transition duration-300 ease-in-out'>
                 <ShoppingCart className='inline-block mr-1 group-hover:scale-110' size={20}/>
                 <span className='hidden sm:inline group-hover:scale-110'>Cart</span>
                 {cart.length > 0 && <span className='absolute -top-2 -left-2 bg-black text-white rounded-full px-2 py-0.5 text-xs group-hover:scale-110 transition duration-300 ease-in-out'>{cart.length}</span>}

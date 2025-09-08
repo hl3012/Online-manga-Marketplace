@@ -35,7 +35,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
 	const isStartDisabled = currentIndex === 0;
 	const isEndDisabled = currentIndex >= featuredProducts.length - itemsPerPage;
 
-    const handleAddToCart = () => {
+    const handleAddToCart = (product) => {
         if(!user){
             toast.error("Please log in to add a product to cart", {id: "login"});
             return;
@@ -72,13 +72,13 @@ const FeaturedProducts = ({ featuredProducts }) => {
 										</div>
                                         
                                             <button
-                                                onClick={handleAddToCart}
+                                                onClick={() => handleAddToCart(product)}
                                                 className='w-full bg-gray-900 hover:bg-gray-700 text-white font-semibold py-1 px-0 transition-colors duration-300 
                                                 flex items-center justify-center'
                                             >
                                                 <ShoppingCart className='w-5 h-5 mr-2' />
                                                 Add to Cart
-                                            </button>)
+                                            </button>
                                         
 									</div>
 								</div>

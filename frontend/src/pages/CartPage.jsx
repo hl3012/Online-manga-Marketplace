@@ -48,7 +48,7 @@ const CartPage = () => {
 		
 				</motion.div>
 			)}
-        <div className='absolute inset-0 h-[10vw] bg-gradient-to-b from-black to-transparent opacity-30 z-[-1]' />
+        {/* <div className='absolute inset-0 h-[10vw] bg-gradient-to-b from-black to-transparent opacity-30 z-[-1]' /> */}
         </div>
       </div>
     </div>
