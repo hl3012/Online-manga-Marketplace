@@ -1,10 +1,10 @@
-import express from "express";
-import { protectRoute } from "../middleware/auth.middleware.js";
-import { getCoupon,validateCoupon } from "../controllers/coupon.controller.js";
+const express = require("express");
+const { protectRoute } = require("../middleware/auth.middleware.js");
+const { getCoupon, validateCoupon } = require("../controllers/coupon.controller.js");
 
 const router = express.Router();
 
 router.get("/", protectRoute, getCoupon);
 router.post("/validate", protectRoute, validateCoupon);
 
-export default router;
+module.exports = router;

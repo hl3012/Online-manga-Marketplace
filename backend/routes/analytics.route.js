@@ -1,6 +1,6 @@
-import express from "express";
-import { adminRoute, protectRoute } from "../middleware/auth.middleware.js";
-import { getAnalyticsData, getDailySalesData } from "../controllers/analytics.controller.js";
+const express = require("express");
+const { adminRoute, protectRoute } = require("../middleware/auth.middleware.js");
+const { getAnalyticsData, getDailySalesData } = require("../controllers/analytics.controller.js");
 
 
 const router = express.Router();
@@ -24,4 +24,4 @@ router.get("/", protectRoute, adminRoute, async (req, res) =>{
     }
 });
 
-export default router;
+module.exports = router;

@@ -1,7 +1,7 @@
-import jwt from "jsonwebtoken";
-import User from "../models/user.model.js";
+const jwt = require("jsonwebtoken");
+const User = require("../models/user.model.js");
 
-export const protectRoute = async (req, res, next) => {
+const protectRoute = async (req, res, next) => {
     try {
         
         const accessToken = req.cookies.accessToken;
@@ -32,11 +32,12 @@ export const protectRoute = async (req, res, next) => {
     }
 }
 
-
-export const adminRoute = async (req, res, next) => {
+const adminRoute = async (req, res, next) => {
     if(req.user && req.user.role === "admin") {
         next();
     }else{
         return res.status(401).json({message:"Access denied - admin only"});
     }
 }
+
+module.exports = { protectRoute, adminRoute };

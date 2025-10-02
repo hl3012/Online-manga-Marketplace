@@ -1,8 +1,7 @@
-import {redis} from "../lib/redis.js";
-import User from "../models/user.model.js";
-import jwt from "jsonwebtoken";
+const {redis} = require("../lib/redis.js");
+const User = require("../models/user.model.js");
+const jwt = require("jsonwebtoken");
 
-// 4
 const generateTokens = (userid) => {
     const accessToken= jwt.sign({userid}, process.env.ACCESS_TOKEN_SECRET, {
         expiresIn: "15m"
@@ -15,11 +14,10 @@ const generateTokens = (userid) => {
     return {accessToken, refreshToken};
 };
 
-// 5
 const storeRefreshToken = async (userId, refreshToken) => {
     await redis.set( `refresh_token:${userId}`, refreshToken, "EX", 7 * 24 * 60 * 60);
 }
-// 6
+
 const setCookies = (res, accessToken, refreshToken) => {
     res.cookie("accessToken", accessToken, {
         httpOnly: true,
@@ -36,7 +34,7 @@ const setCookies = (res, accessToken, refreshToken) => {
     });
 }
 
-export const signup = async (req, res) => {
+const signup = async (req, res) => {
     const { name, email, password } = req.body;
     try {
         const userExists = await User.findOne({email});
@@ -48,9 +46,9 @@ export const signup = async (req, res) => {
         const user = await User.create({ name, email, password });
     
 
-        const {accessToken, refreshToken} = generateTokens(user._id); // 1
-        await storeRefreshToken(user._id, refreshToken);  // 2
-        setCookies(res, accessToken, refreshToken);  // 3
+        const {accessToken, refreshToken} = generateTokens(user._id);
+        await storeRefreshToken(user._id, refreshToken);
+        setCookies(res, accessToken, refreshToken); 
 
         res.status(201).json({
             _id:user._id,
@@ -64,7 +62,7 @@ export const signup = async (req, res) => {
     }
 }
 
-export const login = async (req, res) => {
+const login = async (req, res) => {
     try {
         const {email, password} = req.body;
         const user = await User.findOne({email});
@@ -89,7 +87,7 @@ export const login = async (req, res) => {
     }
 }
 
-export const logout = async (req, res) => {
+const logout = async (req, res) => {
     try {
         const refreshToken = req.cookies.refreshToken;
         if(refreshToken){
@@ -106,9 +104,7 @@ export const logout = async (req, res) => {
     }
 }
 
-
-
-export const refreshToken = async(req, res) => {
+const refreshToken = async(req, res) => {
     try {
         const refreshToken = req.cookies.refreshToken;
 
@@ -142,7 +138,7 @@ export const refreshToken = async(req, res) => {
     }
 }
 
-export const getProfile = async (req, res) => {
+const getProfile = async (req, res) => {
     try {
         res.json({user:req.user})
     } catch (error) {
@@ -151,3 +147,4 @@ export const getProfile = async (req, res) => {
     }
 }
 
+module.exports = { signup, login, logout, refreshToken, getProfile };

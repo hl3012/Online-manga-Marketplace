@@ -1,8 +1,8 @@
-import Order from "../models/order.model.js";
-import Product from "../models/product.model.js";
-import User from "../models/user.model.js";
+const Order = require("../models/order.model.js");
+const Product = require("../models/product.model.js");
+const User = require("../models/user.model.js");
 
-export const getAnalyticsData = async () =>{
+const getAnalyticsData = async () =>{
 
     const totalUsers = await User.countDocuments();
     const totalProducts = await Product.countDocuments();
@@ -29,7 +29,7 @@ export const getAnalyticsData = async () =>{
 }
 
 
-export const getDailySalesData = async (startDate, endDate) =>{
+const getDailySalesData = async (startDate, endDate) =>{
     try {
         const dailySalesData = await Order.aggregate([
             {
@@ -81,5 +81,5 @@ function getDatesInRange(startDate, endDate) {
   
     return dates;
 }
-  
-   
+
+module.exports = { getAnalyticsData, getDailySalesData };

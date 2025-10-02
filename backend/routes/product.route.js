@@ -1,6 +1,6 @@
-import express from "express";
-import { getAllProducts, getFeaturedProducts, createProduct, deleteProduct, getRecommendedProducts, getProductsByCategory, toggleFeaturedProduct } from "../controllers/product.controller.js";
-import { protectRoute, adminRoute } from "../middleware/auth.middleware.js";
+const express = require("express");
+const { getAllProducts, getFeaturedProducts, createProduct, deleteProduct, getRecommendedProducts, getProductsByCategory, toggleFeaturedProduct } = require("../controllers/product.controller.js");
+const { protectRoute, adminRoute } = require("../middleware/auth.middleware.js");
 
 const router = express.Router();
 
@@ -14,4 +14,4 @@ router.patch("/:id", protectRoute, adminRoute, toggleFeaturedProduct);
 router.delete("/:id", protectRoute, adminRoute, deleteProduct);
 
 
-export default router;
+module.exports = router;

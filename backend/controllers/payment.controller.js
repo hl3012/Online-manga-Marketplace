@@ -1,9 +1,8 @@
-import {stripe} from "../lib/stripe.js";
-import Coupon from "../models/coupon.model.js";
-import Order from "../models/order.model.js";
+const {stripe} = require("../lib/stripe.js");
+const Coupon = require("../models/coupon.model.js");
+const Order = require("../models/order.model.js");
 
-
-export const createCheckoutSession = async (req, res) => {
+const createCheckoutSession = async (req, res) => {
     try {
         const {products, couponCode} = req.body;
         
@@ -73,7 +72,7 @@ export const createCheckoutSession = async (req, res) => {
 
 }
 
-export const checkoutSuccess = async (req, res) => {
+const checkoutSuccess = async (req, res) => {
     try {
         const {sessionId} = req.body;
         const session = await stripe.checkout.sessions.retrieve(sessionId);
@@ -107,8 +106,6 @@ export const checkoutSuccess = async (req, res) => {
     }
 }
 
-
-
 async function createStripeCoupon(discountPercentage) {
     const coupon = await stripe.coupons.create({
         duration: "once",
@@ -116,7 +113,6 @@ async function createStripeCoupon(discountPercentage) {
     });
     return coupon.id;
 }
-
 
 async function createNewCoupon(userId){
     await Coupon.findOneAndDelete({userId: userId});
@@ -131,3 +127,4 @@ async function createNewCoupon(userId){
     return newCoupon;
 }
 
+module.exports = { createCheckoutSession, checkoutSuccess };

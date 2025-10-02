@@ -1,8 +1,8 @@
-import {redis} from "../lib/redis.js";
-import Product from "../models/product.model.js";
-import cloudinary from "../lib/cloudinary.js";
+const {redis} = require("../lib/redis.js");
+const Product = require("../models/product.model.js");
+const cloudinary = require("../lib/cloudinary.js");
 
-export const getAllProducts = async (req, res) =>{
+const getAllProducts = async (req, res) =>{
     try {
         const products = await Product.find({});
         res.json({products});
@@ -14,7 +14,7 @@ export const getAllProducts = async (req, res) =>{
 } 
 
 
-export const getFeaturedProducts = async (req, res) =>{
+const getFeaturedProducts = async (req, res) =>{
     try {
         let featuredProducts = await redis.get("featured_products");
         if(featuredProducts){
@@ -36,7 +36,7 @@ export const getFeaturedProducts = async (req, res) =>{
     }
 }
 
-export const createProduct = async (req, res) =>{
+const createProduct = async (req, res) =>{
     try {
         const {name, description, price, image, category} = req.body;
 
@@ -63,7 +63,7 @@ export const createProduct = async (req, res) =>{
     }
 }
 
-export const deleteProduct = async (req, res) =>{
+const deleteProduct = async (req, res) =>{
     try {
         const product = await Product.findById(req.params.id);
         if(!product){
@@ -89,7 +89,7 @@ export const deleteProduct = async (req, res) =>{
 }
 
 
-export const getRecommendedProducts = async (req, res) =>{
+const getRecommendedProducts = async (req, res) =>{
 
     try {
 
@@ -117,7 +117,7 @@ export const getRecommendedProducts = async (req, res) =>{
 }
 
 
-export const getProductsByCategory = async (req, res) =>{      
+const getProductsByCategory = async (req, res) =>{      
     const {category} = req.params;
     try {
         const products = await Product.find({category});
@@ -129,7 +129,7 @@ export const getProductsByCategory = async (req, res) =>{
 }
 
 
-export const toggleFeaturedProduct = async (req, res) =>{
+const toggleFeaturedProduct = async (req, res) =>{
     try {
         const product = await Product.findById(req.params.id);
         if(product){
@@ -158,3 +158,13 @@ async function updateFeaturedProductsCache(){
         console.log("Error updating featured products cache");
     }
 }
+
+module.exports = { 
+    getAllProducts, 
+    getFeaturedProducts, 
+    createProduct, 
+    deleteProduct, 
+    getRecommendedProducts, 
+    getProductsByCategory, 
+    toggleFeaturedProduct 
+};

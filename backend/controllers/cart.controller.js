@@ -1,6 +1,6 @@
-import Product from "../models/product.model.js";
+const Product = require("../models/product.model.js");
 
-export const getCartProducts = async (req, res) => {
+const getCartProducts = async (req, res) => {
     try {
         const products = await Product.find({_id:{$in:req.user.cartItems}});
 
@@ -16,7 +16,7 @@ export const getCartProducts = async (req, res) => {
     }
 }
 
-export const addToCart = async (req, res) => {
+const addToCart = async (req, res) => {
     try {
         const {productId} = req.body;
         const user = req.user;
@@ -37,7 +37,7 @@ export const addToCart = async (req, res) => {
     }
 }
 
-export const removeAllFromCart = async (req, res) => {
+const removeAllFromCart = async (req, res) => {
     try {
         const {productId} = req.body;
         const user = req.user;
@@ -55,7 +55,7 @@ export const removeAllFromCart = async (req, res) => {
     }
 }
 
-export const updateQuantity = async (req, res) => {
+const updateQuantity = async (req, res) => {
     try {
         const {id: productId} = req.params;
         const {quantity} = req.body;
@@ -81,3 +81,5 @@ export const updateQuantity = async (req, res) => {
         
     }
 }
+
+module.exports = { getCartProducts, addToCart, removeAllFromCart, updateQuantity };

@@ -1,6 +1,6 @@
-import express from "express";
-import { login, logout, signup, refreshToken, getProfile } from "../controllers/auth.controller.js";
-import { protectRoute } from "../middleware/auth.middleware.js";
+const express = require("express");
+const { login, logout, signup, refreshToken, getProfile } = require("../controllers/auth.controller.js");
+const { protectRoute } = require("../middleware/auth.middleware.js");
 
 const router = express.Router();
 
@@ -12,7 +12,6 @@ router.post("/refresh-token", refreshToken);
 router.get("/profile", protectRoute, getProfile);
 
 
-
-export default router;
+module.exports = router;
 
 

@@ -1,10 +1,11 @@
-import Redis from "ioredis";
-import dotenv from "dotenv";
+const Redis = require("ioredis");
+const dotenv = require("dotenv");
 
 dotenv.config();
  
-export const redis = new Redis(process.env.UPSTASH_REDIS_URL, {
+const redis = new Redis(process.env.UPSTASH_REDIS_URL, {
     tls: {}  
-  });
+});
 
+module.exports = { redis };
 

@@ -5,10 +5,13 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-      proxy: {
-          '/api': {
-              target: 'http://localhost:5000',
-          }
+    proxy: {
+      '/api': {
+        target: 'http://mangastore-yui.us-east-2.elasticbeanstalk.com',  
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path
       }
+    }
   }
 })

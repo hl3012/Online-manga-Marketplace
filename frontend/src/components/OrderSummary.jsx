@@ -7,7 +7,7 @@ import axios from '../lib/axios'
 
 //invalid sandbox public key
 const stripePromise = loadStripe(
-   "pk_test_51S1uo9HWuXQhHciKfH4PLfioZWGd692J8UoHuXnYvVnBWC0AyMW2nHFHXnedAVAU2S988bUGV1BLweRdTqkU4t5Y00zH4DTefP"
+    "pk_test_51S1uo9HWuXQhHciKvopjnXqAGLdhHq2lFbse3BlakGLaoUFIC6RWI2XgMsa9pxHNXB5i0dfKbzIRj6NptOtdB31N00O2nrMzYO"
 );
 
 const OrderSummary = () => {
