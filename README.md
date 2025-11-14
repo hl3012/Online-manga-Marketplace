@@ -142,7 +142,6 @@ npm install
 
 npm run dev
 
-
 ## **API Overview**
 
 ### Auth (Authentication)
@@ -219,8 +218,8 @@ npm run dev
 | Database | MongoDB Atlas |
 | -------- | ------------- |
 
-| Cache | Upstash Redis  |
-| ----- | --------------- |
+| Cache | Upstash Redis |
+| ----- | ------------- |
 
 ## **UI pages**
 
