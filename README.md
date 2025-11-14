@@ -16,7 +16,7 @@ A full-stack **MERN marketplace** for buying and selling manga. This project inc
 - [Running Locally](#running-locally)
 - [API Overview](#api-overview-example-endpoints)
 - [Deployment](#deployment-1)
-- [UI Page](#UI Pages)
+- [UI Page](#UI-Pages)
 
 ---
 
