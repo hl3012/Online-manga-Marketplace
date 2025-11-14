@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const baseURL = '/api';
+const baseURL = 
+import.meta.env.MODE === "development"
+    ? "/api" 
+    : "https://mangastore-yui.us-east-2.elasticbeanstalk.com/api";;
 
 
 const axiosInstance = axios.create({
