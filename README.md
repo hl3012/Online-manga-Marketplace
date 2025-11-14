@@ -2,6 +2,8 @@
 
 A full-stack **MERN marketplace** for buying and selling manga. This project includes secure authentication, role-based authorization, Stripe payment integration, and a responsive frontend with modern state management. Backend and frontend are deployed separately.
 
+![1763083095435](image/README/1763083095435.png)
+
 ## **Table of Contents**
 
 - [Features](#features)
@@ -221,7 +223,7 @@ npm run dev
 | Cache | Upstash Redis |
 | ----- | ------------- |
 
-## **UI pages**
+## **UI page**
 
 ![1763080052282](image/README/1763080052282.png)
 
